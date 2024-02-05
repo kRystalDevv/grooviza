@@ -47,7 +47,7 @@ Grooviza is a Graphical User Interface-based program with intuitive buttons for 
 ### Configuration
 - The program comes with default settings and runs out of the box.
 - Users can define their music folder path.
-- The program creates a "Music" folder at the execution location for initial song placement.
+- The program creates a "Music" folder at ```C:\Users\YourName\AppData\Roaming\63Player\Music```.
   
 **Note:** _When running the program for the first time, ensure that you populate the newly created "Music" folder with your desired songs. The player relies on the contents of this folder for initial song loading._ 
 
