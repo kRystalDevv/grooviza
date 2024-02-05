@@ -1,3 +1,20 @@
+/*
+ * Copyright (C) 2024 tala
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package pkg63player;
 
 import java.awt.Color;
@@ -5,8 +22,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.Timer;
 
@@ -17,17 +32,19 @@ import javax.swing.Timer;
 public final class Splashscreen extends javax.swing.JFrame {
     private Timer loadingTimer;
     private Timer transitionTimer;
+    DefaultListModel<String> currentListModel = new DefaultListModel<>();
     private int loaded = 0;
     private String[] allowedExtensions = {"mp3", "wav"};
 
-    String defaultPath = "music/";
+    String defaultPath = System.getProperty("user.home") + "\\AppData\\Roaming\\63Player\\Music\\";
+
 
     /**
      * Creates new form Splash screen
      */
      public Splashscreen() {
         initComponents();
-        loadFilesAndUpdatePlaylist(defaultPath);
+        currentListModel = loadFilesAndUpdatePlaylist(defaultPath);
         LoadingBar();
         TransitionTimer(this);
     }
@@ -60,7 +77,6 @@ public final class Splashscreen extends javax.swing.JFrame {
                     loadingBar.updateUI();
                     if(loaded >= 97)
                     {
-                        System.out.println("STOOOOOOOOPPPPPPPPPPPPP!!!");
                     } else {
                         LoadingText.setText(loaded + "%");
                         LoadingText.updateUI();}
@@ -88,7 +104,7 @@ public final class Splashscreen extends javax.swing.JFrame {
                 System.out.println("Loading~ Please wait...");
                 hehe.dispose();
                 System.out.println("Exited Splashscreen!");
-                new MainPlayer().setVisible(true);
+                new MainPlayer(currentListModel, defaultPath).setVisible(true);
                 transitionTimer.stop();
             }
         });
@@ -97,7 +113,7 @@ public final class Splashscreen extends javax.swing.JFrame {
         transitionTimer.start();
     }
     
-    private void loadFilesAndUpdatePlaylist(String folderPath) {
+    private DefaultListModel<String> loadFilesAndUpdatePlaylist(String folderPath) {
         DefaultListModel<String> listModel = new DefaultListModel<>();
         
         // Get a reference to the folder
@@ -118,6 +134,7 @@ public final class Splashscreen extends javax.swing.JFrame {
         
         // Update the JList with the new model
         LoadedSongs.setModel(listModel);
+        return listModel;
     }
     
     // Method to check if a file has an allowed extension
