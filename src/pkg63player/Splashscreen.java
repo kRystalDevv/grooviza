@@ -26,15 +26,20 @@ import javax.swing.DefaultListModel;
 import javax.swing.Timer;
 
 /**
- *
+ * this splash screen is unnecessary but I still made it, and spent most of the time on this rather than the MainPlayer class, 
+ * still pretty proud of it. it gives 3 second initial delay.
+ * 
+ * Displays important informations like what song it has found in home folder and stuff.
+ * 
  * @author tala
  */
 public final class Splashscreen extends javax.swing.JFrame {
     private Timer loadingTimer;
     private Timer transitionTimer;
-    DefaultListModel<String> currentListModel = new DefaultListModel<>();
+    DefaultListModel<String> currentListModel;
     private int loaded = 0;
-    private String[] allowedExtensions = {"mp3", "wav"};
+    private final String[] allowedExtensions;
+    private final Random random;
 
     String defaultPath = System.getProperty("user.home") + "\\AppData\\Roaming\\63Player\\Music\\";
 
@@ -43,13 +48,15 @@ public final class Splashscreen extends javax.swing.JFrame {
      * Creates new form Splash screen
      */
      public Splashscreen() {
+        this.random = new Random();
+        this.allowedExtensions = new String[]{"mp3", "wav"};
+        this.currentListModel = new DefaultListModel<>();
         initComponents();
         currentListModel = loadFilesAndUpdatePlaylist(defaultPath);
         LoadingBar();
         TransitionTimer(this);
     }
     
-    private Random random = new Random();
 
 
     private int loader() {
@@ -64,6 +71,9 @@ public final class Splashscreen extends javax.swing.JFrame {
         return new Color(red, green, blue);
     }
     
+    /**
+     *  Cool animated loading bar at mini splash screen
+     */
     public void LoadingBar() {
         System.out.println("LoadingBar Entered!");
 
@@ -83,7 +93,6 @@ public final class Splashscreen extends javax.swing.JFrame {
                     try {
                         Thread.sleep(50);
                     } catch (InterruptedException ex) {
-                        ex.printStackTrace();
                     }
                 } else {
                     loadingTimer.stop();
@@ -96,7 +105,10 @@ public final class Splashscreen extends javax.swing.JFrame {
         loadingTimer.start();
     }
     
-    
+    /**
+     *  3 second delay, just to show what songs have been loaded!
+     * @param hehe
+     */
     public void TransitionTimer(Splashscreen hehe) {
         transitionTimer = new Timer(3000, new ActionListener() {
             @Override

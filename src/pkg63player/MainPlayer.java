@@ -35,19 +35,23 @@ import javax.swing.UIManager;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
- *
- * @author ThinkPad
+ * This is the main program, where the user interacts with the player.
+ * @author tala
  */
 public class MainPlayer extends javax.swing.JFrame {
 
     /**
-     * Creates new form Mainmenu
+     * Creates new form Main menu
      */
     boolean a = false;
     DefaultListModel<String> listModel = new DefaultListModel<>();
     String defaultPath;
     
-    
+    /**
+     * this constructor makes sure all variables are initialized from previous classes.
+     * @param currentListModel contains lists of songs stored in user's home folder.
+     * @param defaultPath this is default home directory of users
+     */
     public MainPlayer(DefaultListModel<String> currentListModel, String defaultPath) {
         this.listModel = currentListModel;
         this.defaultPath = defaultPath;
@@ -246,7 +250,6 @@ public class MainPlayer extends javax.swing.JFrame {
         ListPlaylist.setModel(listModel);
         ListPlaylist.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         ListPlaylist.setMaximumSize(new java.awt.Dimension(77, 74));
-        ListPlaylist.setMinimumSize(new java.awt.Dimension(0, 0));
         ListPlaylist.setPreferredSize(new java.awt.Dimension(210, 74));
         jScrollPane1.setViewportView(ListPlaylist);
 
@@ -306,6 +309,7 @@ public class MainPlayer extends javax.swing.JFrame {
         VolumeSlider.setPaintLabels(true);
         VolumeSlider.setPaintTicks(true);
         VolumeSlider.setSnapToTicks(true);
+        VolumeSlider.setFocusable(false);
         Footer.add(VolumeSlider, java.awt.BorderLayout.LINE_END);
 
         Inset.setBackground(new java.awt.Color(234, 199, 206));
@@ -392,10 +396,21 @@ public class MainPlayer extends javax.swing.JFrame {
         System.out.println("List refreshed!");
     }
     
+    /**
+     *
+     * @param hover
+     * @param rand
+     */
     public void changecolor(JPanel hover, Color rand){
         hover.setBackground(rand);
     }
     
+    /**
+     *
+     * @param h1
+     * @param h2
+     * @param numberbool
+     */
     public void clickmenu(JPanel h1, JPanel h2, int numberbool){
         if(numberbool == 1){
             h1.setBackground(new Color(25, 29, 74));
@@ -407,11 +422,22 @@ public class MainPlayer extends javax.swing.JFrame {
         }
     }
     
+    /**
+     *
+     * @param button
+     * @param resourcheimg
+     */
     public void changeimage(JLabel button, String resourcheimg){
         ImageIcon aimg = new ImageIcon(getClass().getResource(resourcheimg));
         button.setIcon(aimg);
     }
     
+    /**
+     *
+     * @param menushowhide
+     * @param dashboard
+     * @param button
+     */
     public void hideshow(JPanel menushowhide, boolean dashboard, JLabel button){
         if(dashboard == true){
             menushowhide.setPreferredSize(new Dimension(50, menushowhide.getHeight()));
