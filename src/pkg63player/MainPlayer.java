@@ -205,7 +205,7 @@ public class MainPlayer extends javax.swing.JFrame {
         hidemenu.setLayout(new java.awt.BorderLayout());
 
         buttonhidemenu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        buttonhidemenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkg63player/Icon/menu_32px.png"))); // NOI18N
+        buttonhidemenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pkg63player/img/menu_32px.png"))); // NOI18N
         buttonhidemenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonhidemenu.setMaximumSize(new java.awt.Dimension(50, 50));
         buttonhidemenu.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -441,11 +441,11 @@ public class MainPlayer extends javax.swing.JFrame {
     public void hideshow(JPanel menushowhide, boolean dashboard, JLabel button){
         if(dashboard == true){
             menushowhide.setPreferredSize(new Dimension(50, menushowhide.getHeight()));
-            changeimage(button, "/pkg63player/Icon/menu_32px.png");
+            changeimage(button, "/pkg63player/img/menu_32px.png");
         }
         else{
             menushowhide.setPreferredSize(new Dimension(270, menushowhide.getHeight()));
-            changeimage(button, "/pkg63player/Icon/back_32px.png");
+            changeimage(button, "/pkg63player/img/back_32px.png");
         }
         
     }
