@@ -34,7 +34,7 @@ import javax.swing.JComponent;
 import javax.swing.KeyStroke;
 
 /**
- *
+ * dialogue class, mostly used for confirmation.
  * @author tala
  */
 public class PlayNext extends javax.swing.JDialog {
@@ -43,9 +43,13 @@ public class PlayNext extends javax.swing.JDialog {
     /** A return status code - returned if OK button has been pressed */
     public static final int RET_OK = 1;
 
-    public String selectNextSong = "";
+    private String selectNextSong = "";
     
-    /** Creates new form PlayNext */
+    /** Creates new form PlayNext
+     * @param parent
+     * @param modal
+     * @param selectNextSong 
+     */
     public PlayNext(java.awt.Frame parent, boolean modal, String selectNextSong) {
         super(parent, modal);
         initComponents();
