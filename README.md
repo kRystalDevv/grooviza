@@ -3,6 +3,8 @@
 ## Project Overview
 Grooviza is a collaborative project developed by a group of students at DHA Suffa University for their Data Structures and Algorithms (DSA) course. it is a Java-based music player designed to play music from both the Spotify API (Online) and your Local Music Library (Offline). Leveraging data structures like LinkedList and Stack for managing playlists and history, Grooviza provides a customizable and personalized music playback experience. The player features a Theme Manager allowing users to change the player's skin, including uploading custom images for a personalized theme. With a sleek design and user-friendly controls, Grooviza serves as an alternative to default music players with cross-platform compatibility.
 
+For documentation of the source code, visit [Source Code's JavaDoc](https://krystaldevv.github.io/grooviza/)
+
 Contributors:
 
 - **[Talha Nizamani](https://github.com/krystaldevv/)**
